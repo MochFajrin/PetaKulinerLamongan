@@ -2,6 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('CulinariesModel');
+    }
+
     public function data_pemetaan()
     {
         $data = array(
@@ -22,7 +28,8 @@ class Admin extends CI_Controller
     {
         $data = array(
             'title' => 'Input Peta',
-            'content' => 'Admin/v_input_peta'
+            'content' => 'Admin/v_input_peta',
+            'culinaries' => $this->CulinariesModel->getCulinaries()
         );
         $this->load->view('templates/wrapper', $data);
     }

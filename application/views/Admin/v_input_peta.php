@@ -24,9 +24,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div id="map" style="width: 100%; height: 400px;"></div>
-
+                        <div class="form-grub mt-4">
+                            <p id="text-danger" class="text-success">Silahkan Masukkan lokasi anda</p>
+                            <!-- <p class="text-danger">Jika lokasi dirasa kurang akurat, tolong klik peta dan atur sesuai lokasi anda</p> -->
+                            <button class="btn btn-success btn-sm form-control" onclick="getLocation();">Auto Check</button>
+                        </div>
                     </div>
                     <div class="col-sm-6">
+                        <?= form_open(); ?>
                         <div class="form-grub">
                             <label for="title">Judul Laporan</label>
                             <input type="text" id="title" name="title" class="form-control">
@@ -34,6 +39,15 @@
                         <div class="form-grub">
                             <label for="owner_name">Nama Pemilik</label>
                             <input type="text" id="owner_name" name="owner_name" class="form-control">
+                        </div>
+                        <div class="form-grub">
+                            <label for="culinary_name">Nama Kuliner</label>
+                            <select type="text" id="owner_name" name="id_culinary" class="form-control">
+                                <option value=""></option>
+                                <?php foreach ($culinaries as $culinary) { ?>
+                                    <option value="<?= $culinary->id; ?>"><?= $culinary->name; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="form-grub">
                             <label for="address">Alamat</label>
@@ -45,22 +59,16 @@
                         </div>
 
                         <div class="form-grub">
-                            <label for="latitude">Latitude</label>
-                            <input type="text" id="Latitude" name="latitude" class="form-control">
+                            <input type="hidden" id="Latitude" name="latitude" class="form-control">
                         </div>
                         <div class="form-grub">
-                            <label for="longitude">Longitude</label>
-                            <input type="text" id="Longitude" name="longitude" class="form-control">
-                        </div>
-                        <div class="form-grub">
-                            <label for="description">Auto Check</label>
-                            <button class="btn btn-success btn-sm form-control" onclick="getLocation();">Auto Check</button>
-                        </div>
-                        <div class="form-grub">
-                            <label for="description">Auto Check</label>
-                            <button class="btn btn-success btn-sm form-control" onclick="getLocation();">Auto Check</button>
+                            <input type="hidden" id="Longitude" name="longitude" class="form-control">
                         </div>
 
+                        <div class="form-grub mt-3">
+                            <button class="btn btn-primary btn-sm form-control" onclick="getLocation();">Publish Your Report</button>
+                        </div>
+                        <?= form_close(); ?>
                     </div>
 
                 </div>
@@ -73,6 +81,12 @@
 </div>
 <!-- /.content-wrapper -->
 <script>
+    //show message
+    document.getElementsByClassName('btn btn-success')[0].addEventListener('click', () => {
+        const text = document.getElementById('text-danger');
+        text.setAttribute('class', 'text-warning');
+        text.innerText = 'Jika lokasi dirasa kurang akurat, tolong klik peta dan atur sesuai lokasi anda';
+    });
     //get current location
     const latitude = document.getElementById("Latitude");
     const longitude = document.getElementById("Longitude");
@@ -91,9 +105,12 @@
     function showPosition(position) {
         latitude.value = position.coords.latitude;
         longitude.value = position.coords.longitude;
+        L.marker([latitude.value, longitude.value]).bindPopup("Your Location").addTo(map);
+
     }
 
     //type
+
     const streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
