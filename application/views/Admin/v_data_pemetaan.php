@@ -26,28 +26,6 @@
             </div>
         </div>
     </section>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="card p-2">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-grub">
-                            <label for="latitude">Latitude</label>
-                            <input type="text" id="Latitude" name="latitude" id="latitude" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-grub">
-                            <label for="longitude">Longitude</label>
-                            <input type="text" id="Longitude" name="longitude" id="longitude" class="form-control">
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -70,26 +48,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Usaha Nasi Boran</td>
-                                        <td>Ucok</td>
-                                        <td>Lamongan</td>
-                                        <td>7191919</td>
-                                        <td>1919191919</td>
-                                        <td><span class="badge badge-pill badge-success">Disetujui</span></td>
-                                        <td><a href=""><button class="btn btn-primary btn-sm">Detail</button></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Asaha Nasi Boran</td>
-                                        <td>Acok</td>
-                                        <td>Lamongan</td>
-                                        <td>7191919</td>
-                                        <td>1919191919</td>
-                                        <td><span class="badge badge-pill badge-success">Disetujui</span></td>
-                                        <td><a href=""><button class="btn btn-primary btn-sm">Detail</button></a></td>
-                                    </tr>
+                                    <?php foreach ($reports as $report) { ?>
+                                        <tr>
+                                            <td><?= $report->id; ?></td>
+                                            <td><?= $report->nama_pemilik; ?></td>
+                                            <td><?= $report->alamat; ?></td>
+                                            <td><?= $report->deskripsi; ?></td>
+                                            <td><?= $report->latitude; ?></td>
+                                            <td><?= $report->longitude; ?></td>
+                                            <td><span class="badge badge-pill badge-success">Disetujui</span></td>
+                                            <td><a href=""><button class="btn btn-primary btn-sm">Detail</button></a></td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -140,44 +110,6 @@
         layers: [streets],
     });
 
-    const baseLayers = {
-        'Streets': streets,
-        'Satellite': satellite,
-        'Open Street Map ': openStreetMap,
-        'Dark': dark
-    };
-    const layerControl = L.control.layers(baseLayers).addTo(map);
-
-    //icon marker
-    const greenIcon = L.icon({
-        iconUrl: '<?= base_url('uploads/marker_peta/pngwing.com.png') ?>',
-        iconSize: [38, 95]
-    });
-
-    //marker
-    const marker1 = L.marker([-7.0941396, 112.3310524], {
-        icon: greenIcon
-    }).bindPopup("<img src = '<?= base_url('uploads/thumbnail_peta/Screenshot 2022-12-08 100735.png') ?>' width = '150px'> <br><b>Nasi Boran</b><br>Ds. sumberejo").addTo(map);
-
-    const marker2 = L.marker([-7.122370867283126, 112.42218293250119]).bindPopup("<img src = '<?= base_url('uploads/thumbnail_peta/Screenshot 2022-12-08 100735.png') ?>' width = '150px'> <br><b>Nasi Boran</b><br>Ds. sumberejo").addTo(map);
-
-    //circle
-    L.circle([-7.123212893646701, 112.42367065161434], {
-        color: 'red',
-        radius: 120
-    }).addTo(map);
-
-    //polyline
-    // var latlngs = [
-    //     [45.51, -122.68],
-    //     [37.77, -122.43],
-    //     [34.04, -118.2]
-    // ];
-
-    // var polyline = L.polyline(latlngs, {
-    //     color: 'red'
-    // }).addTo(map);
-
     L.polyline([
         [-7.117515530095236, 112.42267572578366],
         [-7.118934165164256, 112.42246626400863],
@@ -210,41 +142,8 @@
         });
     });
 
-    //get coordinat
-    const latInput = document.querySelector('[name=latitude]');
-    const lngInput = document.querySelector('[name=longitude]');
 
-    const currentLocation = [-2.4948486736431805, 118.7519626470474];
-    map.attributionControl.setPrefix(false);
-
-    const marker = new L.marker(currentLocation, {
-        draggable: 'true'
-    });
-
-    //mengambil coordinat saat marker digeser
-
-    marker.on('dragend', function(event) {
-        const position = marker.getLatLng();
-        marker.setLatLng(position, {
-            currentLocation
-        }).bindPopup(position).update();
-        $('#Latitude').val(position.lat);
-        $('#Longitude').val(position.lng);
-    });
-
-    //mengambil coordinat saat map diklik
-
-    map.on('click', function(e) {
-        const lat = e.latlng.lat;
-        const lng = e.latlng.lng;
-        if (!marker) {
-            marker = L.marker(e.latlng).addTo(map);
-        } else {
-            marker.setLatLng(e.latlng);
-        }
-        latInput.value = lat;
-        lngInput.value = lng;
-    });
-
-    map.addLayer(marker);
+    <?php foreach ($reports as $report) { ?>
+        L.marker([<?= $report->latitude ?>, <?= $report->longitude ?>]).bindPopup('<?= $report->culinary_name ?>').addTo(map);
+    <?php } ?>
 </script>
