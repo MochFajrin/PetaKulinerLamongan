@@ -58,7 +58,11 @@
                                             <td><?= $report->owner_name; ?></td>
                                             <td><?= $report->nama_kecamatan; ?></td>
                                             <td><span id="status" class="badge badge-pill badge-success"><?= $report->status; ?></span></td>
-                                            <td><a href=""><button class="btn btn-primary btn-sm">Detail</button></a></td>
+                                            <td class="text-center">
+                                                <a href=""><button class="btn btn-primary btn-sm">Detail</button></a>
+                                                <a href=""><button class="btn btn-warning btn-sm mx-3">Edit</button></a>
+                                                <a href=""><button class="btn btn-danger btn-sm">Hapus</button></a>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -121,6 +125,6 @@
 
 
     <?php foreach ($reports as $report) { ?>
-        L.marker([<?= $report->latitude ?>, <?= $report->longitude ?>]).bindPopup('<?= $report->culinary_name ?>').addTo(map);
+        L.marker([<?= $report->latitude ?>, <?= $report->longitude ?>]).bindPopup("<img src='<?= base_url('uploads/thumbnail_peta/' . $report->thumb) ?>' width = '100px'><br><strong><?= $report->culinary_name ?></strong> ").addTo(map);
     <?php } ?>
 </script>

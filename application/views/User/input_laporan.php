@@ -24,23 +24,23 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div id="map" style="width: 100%; height: 400px;"></div>
-                        <div class="form-grub mt-4">
+                        <div class="form-grub mb-3 mt-4">
                             <p id="text-danger" class="text-success">Silahkan Masukkan lokasi anda</p>
                             <!-- <p class="text-danger">Jika lokasi dirasa kurang akurat, tolong klik peta dan atur sesuai lokasi anda</p> -->
                             <button class="btn btn-success btn-sm form-control" onclick="getLocation();">Auto Check</button>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <?= form_open_multipart('User/input_laporan_laporan'); ?>
-                        <div class="form-grub">
+                        <?= form_open_multipart('User/input_laporan'); ?>
+                        <div class="form-grub mb-3">
                             <label for="title">Judul Laporan</label>
-                            <input type="text" id="title" name="judul" class="form-control">
+                            <input type="text" id="title" name="judul" class="form-control" placeholder="Masukan judul laporan">
                         </div>
-                        <div class="form-grub">
+                        <div class="form-grub mb-3">
                             <label for="owner_name">Nama Pemilik</label>
-                            <input type="text" id="owner_name" name="nama_pemilik" class="form-control">
+                            <input type="text" id="owner_name" name="nama_pemilik" class="form-control" placeholder="Masukan nama pemilik usaha kuliner">
                         </div>
-                        <div class="form-grub">
+                        <div class="form-grub mb-3">
                             <label for="culinary_name">Nama Kuliner</label>
                             <select type="text" id="owner_name" name="nama_kuliner" class="form-control">
                                 <option value=""></option>
@@ -49,7 +49,7 @@
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="form-grub">
+                        <div class="form-grub mb-3">
                             <label for="culinary_name">Nama Kecamatan</label>
                             <select type="text" id="owner_name" name="nama_kuliner" class="form-control">
                                 <option value=""></option>
@@ -58,13 +58,21 @@
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="form-grub">
+                        <div class="form-grub mb-3">
                             <label for="address">Alamat</label>
-                            <input type="text" id="address" name="alamat" class="form-control">
+                            <input type="text" id="address" name="alamat" class="form-control" placeholder="Masukkan alamat dari usaha kuliner">
                         </div>
-                        <div class="form-grub">
+                        <div class="form-grub mb-3">
+                            <label for="open_time">Jam Buka</label>
+                            <input type="time" id="open_time" name="open_time" class="form-control">
+                        </div>
+                        <div class="form-grub mb-3">
+                            <label for="address">Jam Tutup</label>
+                            <input type="time" id="open_time" name="open_time" class="form-control">
+                        </div>
+                        <div class="form-grub mb-3">
                             <label for="description">Deskripsi</label>
-                            <input type="text" id="description" name="deskripsi" class="form-control">
+                            <textarea name="description" id="description" class="form-control" placeholder="Masukkan deskripsi tambahans seperti menu apa saja yang dijual"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Foto Toko, Gerobak, atau Kedai</label>
@@ -78,14 +86,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-grub">
+                        <div class="form-grub mb-3">
                             <input type="hidden" id="Latitude" name="latitude" class="form-control">
                         </div>
-                        <div class="form-grub">
+                        <div class="form-grub mb-3">
                             <input type="hidden" id="Longitude" name="longitude" class="form-control">
                         </div>
 
-                        <div class="form-grub mt-5">
+                        <div class="form-grub mb-3">
                             <button type="submit" class="btn btn-primary btn-sm form-control" onclick="getLocation();">Publish Your Report</button>
                         </div>
                         <?= form_close(); ?>

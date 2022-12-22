@@ -16,7 +16,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item mb-2">
-                    <a href="<?= base_url('Admin/data_pemetaan') ?>" class="nav-link">
+                    <a href="<?= base_url('') ?>" class="nav-link">
                         <i class="nav-icon fa-solid fa-house mr-3"></i>
                         <p>Beranda</p>
                     </a>
