@@ -16,7 +16,6 @@ class Auth extends CI_Controller
             $this->load->view('auth/login');
             $this->load->view('templates/auth_footer');
         } else {
-            // validation success
             $this->_login_user();
         }
     }
@@ -133,5 +132,10 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! your account has been created, please login!</div>');
             redirect('Auth/login_user');
         }
+    }
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('Auth/login_user');
     }
 }

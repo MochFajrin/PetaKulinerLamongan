@@ -50,9 +50,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($reports as $report) { ?>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($reports as $report) { ?>
                                         <tr>
-                                            <td><?= $report->id; ?></td>
+                                            <td><?= $no++; ?></td>
                                             <td><?= $report->title; ?></td>
                                             <td><?= $report->culinary_name; ?></td>
                                             <td><?= $report->owner_name; ?></td>
@@ -60,8 +62,8 @@
                                             <td><span id="status" class="badge badge-pill badge-success"><?= $report->status; ?></span></td>
                                             <td class="text-center">
                                                 <a href=""><button class="btn btn-primary btn-sm">Detail</button></a>
-                                                <a href=""><button class="btn btn-warning btn-sm mx-3">Edit</button></a>
-                                                <a href=""><button class="btn btn-danger btn-sm">Hapus</button></a>
+                                                <a href="<?= base_url('User/form_update/' . $report->id) ?>"><button class="btn btn-warning btn-sm mx-3">Edit</button></a>
+                                                <a href="<?= base_url('User/delete_laporan/' . $report->id); ?>"><button class="btn btn-danger btn-sm">Hapus</button></a>
                                             </td>
                                         </tr>
                                     <?php } ?>

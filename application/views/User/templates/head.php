@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title ?> | Peta Kuliner Lamongan</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/favicon/favicon.ico'); ?>">
     <!-- custom css -->
     <link rel="stylesheet" href="<?= base_url('assets/style/custom_style.css') ?>">
     <!-- Google Font: Source Sans Pro -->

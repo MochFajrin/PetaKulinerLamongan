@@ -2,7 +2,7 @@
     <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2022 <a href="https://adminlte.io">5B Teknik Informatika Unisla</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022 <a href="https://unisla.ac.id">5B Teknik Informatika Unisla</a>.</strong> All rights reserved.
 </footer>
 
 <!-- Control Sidebar -->
@@ -13,7 +13,7 @@
 </div>
 <!-- ./wrapper -->
 
-
+<script src="<?= base_url('assets/js/crud_laporan.js') ?>"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('assets/templates/adminLte/'); ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->

@@ -5,11 +5,11 @@
     </a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex border-bottom">
-            <div class="image m-2">
-                <img class="img-circle elevation-2" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg" alt="User Image">
+            <div class="user-block">
+                <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/thumbnail_peta/' . $profile['profile_pict']); ?>">
             </div>
             <div class="info">
-                <a href="#" class="d-block mt-2">Jhon Doe</a>
+                <p class="text-primary mt-1">Jhon Doe</p>
             </div>
         </div>
         <nav class="mt-2">
@@ -39,8 +39,8 @@
                         <p>Riwayat Laporan</p>
                     </a>
                 </li>
-                <li class="nav-item" style="margin-top: 100%;">
-                    <a href="../widgets.html" class="nav-link">
+                <li class="nav-item" style="margin-top: 80%;">
+                    <a href="<?= base_url('Auth/logout'); ?>" class="nav-link">
                         <i class="nav-icon fa-solid fa-arrow-right-from-bracket mr-3"></i>
                         <p>Logout</p>
                     </a>

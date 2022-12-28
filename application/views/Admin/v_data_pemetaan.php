@@ -48,14 +48,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($reports as $report) { ?>
+                                    <?php foreach ($mapping as $map) { ?>
                                         <tr>
-                                            <td><?= $report->id; ?></td>
-                                            <td><?= $report->nama_pemilik; ?></td>
-                                            <td><?= $report->alamat; ?></td>
-                                            <td><?= $report->deskripsi; ?></td>
-                                            <td><?= $report->latitude; ?></td>
-                                            <td><?= $report->longitude; ?></td>
+                                            <td><?= $map->id; ?></td>
+                                            <td><?= $map->nama_pemilik; ?></td>
+                                            <td><?= $map->alamat; ?></td>
+                                            <td><?= $map->deskripsi; ?></td>
+                                            <td><?= $map->latitude; ?></td>
+                                            <td><?= $map->longitude; ?></td>
                                             <td><span class="badge badge-pill badge-success">Disetujui</span></td>
                                             <td><a href=""><button class="btn btn-primary btn-sm">Detail</button></a></td>
                                         </tr>
@@ -143,7 +143,7 @@
     });
 
 
-    <?php foreach ($reports as $report) { ?>
-        L.marker([<?= $report->latitude ?>, <?= $report->longitude ?>]).bindPopup('<?= $report->culinary_name ?>').addTo(map);
+    <?php foreach ($maps as $map) { ?>
+        L.marker([<?= $map->latitude ?>, <?= $map->longitude ?>]).bindPopup('<?= $map->culinary_name ?>').addTo(map);
     <?php } ?>
 </script>
