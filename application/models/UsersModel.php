@@ -4,6 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class UsersModel extends CI_Model
 {
+    public function getAllUserData()
+    {
+        return $this->db->get('tb_users')->result();
+    }
+
     public function insertLaporan($data)
     {
         return $this->db->insert('tb_reports', $data);

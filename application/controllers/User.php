@@ -135,7 +135,8 @@ class User extends CI_Controller
             'data' => $this->MappingModel->getMappingDataByIdReports($id_laporan),
             'content' => 'User/update_laporan',
             'culinaries' => $this->CulinariesModel->getCulinaries(),
-            'list_kecamatan' => $kecamatan->kecamatan
+            'list_kecamatan' => $kecamatan->kecamatan,
+            'profile' => $this->UsersModel->getUserProfileById($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id']),
         );
         $this->load->view('User/templates/wrapper', $data);
     }
@@ -160,7 +161,22 @@ class User extends CI_Controller
             $this->load->view('User/templates/wrapper', $data);
         } else {
             $profile_pict = $_FILES['profile_pict']['name'];
-            if ($profile_pict = '') {
+
+            if ($profile_pict == '') {
+                $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+                $data = array(
+                    'first_name' => $this->input->post('first_name'),
+                    'last_name' => $this->input->post('last_name'),
+                    'password' => password_hash(
+                        $this->input->post('password'),
+                        PASSWORD_DEFAULT
+                    ),
+                    'birth_date' => $this->input->post('birth_date'),
+                    'address' => $this->input->post('address'),
+                    'gender' => $this->input->post('gender'),
+                );
+                $this->UsersModel->updateUserProfile($id, $data);
+                redirect('User/profil');
             } else {
                 $config['upload_path'] = './uploads/profile_pict';
                 $config['allowed_types'] = 'jpg|jpeg|png';
@@ -174,24 +190,23 @@ class User extends CI_Controller
                 } else {
                     $profile_pict = $this->upload->data('file_name');
                 }
+
+                $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+                $data = array(
+                    'first_name' => $this->input->post('first_name'),
+                    'last_name' => $this->input->post('last_name'),
+                    'password' => password_hash(
+                        $this->input->post('password'),
+                        PASSWORD_DEFAULT
+                    ),
+                    'birth_date' => $this->input->post('birth_date'),
+                    'address' => $this->input->post('address'),
+                    'gender' => $this->input->post('gender'),
+                    'profile_pict' => $profile_pict
+                );
+                $this->UsersModel->updateUserProfile($id, $data);
+                redirect('User/profil');
             }
-            $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
-            $data = array(
-                'first_name' => $this->input->post('first_name'),
-                'last_name' => $this->input->post('last_name'),
-                'password' => password_hash(
-                    $this->input->post('password'),
-                    PASSWORD_DEFAULT
-                ),
-                'birth_date' => $this->input->post('birth_date'),
-                'address' => $this->input->post('address'),
-                'gender' => $this->input->post('gender'),
-                'profile_pict' => $profile_pict
-            );
-            $this->UsersModel->updateUserProfile($id, $data);
-            var_dump($data);
-            var_dump($id);
-            redirect('User/profil');
         }
     }
 }

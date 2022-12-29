@@ -6,10 +6,14 @@
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex border-bottom">
             <div class="user-block">
-                <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/thumbnail_peta/' . $profile['profile_pict']); ?>">
+                <?php if ($profile['profile_pict'] == null or  $profile['profile_pict'] == '') { ?>
+                    <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/profile_pict/blank.png'); ?>">
+                <?php } else { ?>
+                    <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/profile_pict/' . $profile['profile_pict']); ?>">
+                <?php } ?>
             </div>
             <div class="info">
-                <p class="text-primary mt-1">Jhon Doe</p>
+                <p class="text-primary mt-1"><?= $profile['first_name'] . ' ' . $profile['last_name']; ?></p>
             </div>
         </div>
         <nav class="mt-2">

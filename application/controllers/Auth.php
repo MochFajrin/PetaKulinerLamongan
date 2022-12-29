@@ -30,7 +30,7 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Login admin';
             $this->load->view('templates/auth_header', $data);
-            $this->load->view('auth/login');
+            $this->load->view('auth/login_admin');
             $this->load->view('templates/auth_footer');
         } else {
             $this->_login_admin();
@@ -76,7 +76,7 @@ class Auth extends CI_Controller
                     'email' => $user['email']
                 ];
                 $this->session->set_userdata($data);
-                echo 'Selamat Datang Admin';
+                redirect('Admin/data_pemetaan');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong Password!!</div>');
                 redirect('Auth/login_admin');
@@ -137,5 +137,10 @@ class Auth extends CI_Controller
     {
         $this->session->sess_destroy();
         redirect('Auth/login_user');
+    }
+    public function logout_admin()
+    {
+        $this->session->sess_destroy();
+        redirect('Auth/login_admin');
     }
 }

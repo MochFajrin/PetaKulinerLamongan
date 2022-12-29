@@ -1,30 +1,21 @@
   //show message
-  document.getElementsByClassName('btn btn-success')[0].addEventListener('click', () => {
+  const alertMessage =  document.getElementsByClassName('btn btn-success')[0];
+
+    alertMessage.addEventListener('click', (e) => {
     const text = document.getElementById('text-danger');
     text.setAttribute('class', 'text-danger');
+    alertMessage.setAttribute('disabled', 'disabled');
+    console.log(e);
     text.innerText = 'Jika lokasi dirasa kurang akurat, tolong klik peta dan atur sesuai lokasi anda';
 });
+
 //get current location
 const latitude = document.getElementById("Latitude");
 const longitude = document.getElementById("Longitude");
 latitude.value = -6.980599;
 longitude.value = 112.325913;
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        latitude.innerHTML = "Geolocation is not supported by this browser.";
-        longitude.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
 
-function showPosition(position) {
-    latitude.value = position.coords.latitude;
-    longitude.value = position.coords.longitude;
-    L.marker([latitude.value, longitude.value]).bindPopup("Your Location").addTo(map);
-
-}
 
 //type
 
@@ -79,29 +70,34 @@ const marker = new L.marker(currentLocation, {
     draggable: 'true'
 });
 
-//mengambil coordinat saat marker digeser
+//get current location
 
-marker.on('dragend', function(event) {
-    const position = marker.getLatLng();
-    marker.setLatLng(position, {
-        currentLocation
-    }).bindPopup(position).update();
-    $('#Latitude').val(position.lat);
-    $('#Longitude').val(position.lng);
-});
-
-//mengambil coordinat saat map diklik
-
-map.on('click', function(e) {
-    const lat = e.latlng.lat;
-    const lng = e.latlng.lng;
-    if (!marker) {
-        marker = L.marker(e.latlng).addTo(map);
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        marker.setLatLng(e.latlng);
+        alertMessage.innerHTML = "Geolocation is not supported by this browser.";
     }
-    latInput.value = lat;
-    lngInput.value = lng;
-});
+}
 
-map.addLayer(marker);
+function showPosition(position) {
+
+    latitude.value = position.coords.latitude;
+    longitude.value = position.coords.longitude;
+    const marker = L.marker([latitude.value, longitude.value], { draggable : 'true'});
+    marker.bindPopup("Your Location");
+    marker.addTo(map);
+
+    console.log(latitude.value + ' '+ longitude.value);
+
+    marker.on('dragend', function(event) {
+        const position = marker.getLatLng();
+        marker.setLatLng(position, {
+            currentLocation
+        }).bindPopup("Your Location").update();
+        $('#Latitude').val(position.lat);
+        $('#Longitude').val(position.lng);
+        console.log(latitude.value +' '+ longitude.value);
+    });
+
+}

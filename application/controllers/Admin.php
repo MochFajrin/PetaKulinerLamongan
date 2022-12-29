@@ -19,8 +19,8 @@ class Admin extends CI_Controller
     {
         $data = array(
             'title' => 'Data Pemetaan Kuliner di Lamongan',
-            'content' => 'Admin/v_data_pemetaan',
-            'mapping' => $this->MappingModel->getMappingData()
+            'content' => 'Admin/data_pemetaan',
+            'mapping' => $this->MappingModel->viewMap()
         );
         $this->load->view('Admin/templates/wrapper', $data);
     }
@@ -28,16 +28,17 @@ class Admin extends CI_Controller
     {
         $data = array(
             'title' => 'Data Pemetaan Kuliner di Lamongan',
-            'content' => 'Admin/v_data_pengguna'
+            'content' => 'Admin/data_pengguna',
+            'users' => $this->UsersModel->getAllUserData()
         );
         $this->load->view('Admin/templates/wrapper', $data);
     }
-    public function input_peta()
+    public function data_laporan()
     {
         $data = array(
-            'title' => 'Input Peta',
-            'content' => 'Admin/v_input_peta',
-            'culinaries' => $this->CulinariesModel->getCulinaries()
+            'title' => 'Data Pemetaan Kuliner di Lamongan',
+            'content' => 'Admin/data_laporan',
+            'mapping' => $this->MappingModel->getMappingData('')
         );
         $this->load->view('Admin/templates/wrapper', $data);
     }

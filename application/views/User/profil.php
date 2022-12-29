@@ -90,9 +90,10 @@
                                             <label for="profile_pict" class="col-sm-2 col-form-label">Foto Profil</label>
                                             <div class="col-sm-10">
                                                 <input type="file" class="form-control" id="profile_pict" name="profile_pict">
+                                                <input type="hidden" name="old_pict" value="<?= base_url('uploads/profile_pict/' . $profile['profile_pict']) ?>">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class=" form-group row">
                                             <label for="first_name" class="col-sm-2 col-form-label">First name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" value="<?= $profile['first_name'] ?>" class="form-control" id="first_name" name="first_name" placeholder="First name">
@@ -113,7 +114,7 @@
                                         <div class="form-group row">
                                             <label for="password" class="col-sm-2 col-form-label">Password</label>
                                             <div class="col-sm-10">
-                                                <input type="password" value="<?= $profile['password'] ?>" class="form-control" id="password" name="password" placeholder="Masukkan password">
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
                                             </div>
                                         </div>
                                         <div class="form-group row">
