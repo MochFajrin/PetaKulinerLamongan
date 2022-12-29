@@ -9,11 +9,11 @@
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex border-bottom">
-            <div class="image m-2">
-                <img class="img-circle elevation-2" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg" alt="User Image">
+            <div class="user-block">
+                <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/'); ?>">
             </div>
-            <div class="info">
-                <a href="#" class="d-block">Jhon Doe</a>
+            <div class="info mt-1">
+                <p class="text-primary">Admin</p>
             </div>
         </div>
 
@@ -24,31 +24,25 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="<?= base_url('Admin/data_pemetaan') ?>" class="nav-link">
-                        <i class="fa-solid fa-map-location-dot"></i>
+                        <i class="nav-icon fa-solid fa-map-location-dot"></i>
                         <p>Data Pemetaan</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="../widgets.html" class="nav-link">
-                        <i class="fa-solid fa-clipboard-user"></i>
+                <li class="nav-item mt-3">
+                    <a href="<?= base_url('Admin/data_laporan') ?>" class="nav-link">
+                        <i class="nav-icon fa-solid fa-clipboard-user"></i>
                         <p>Data Laporan Pengguna</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mt-3">
                     <a href="<?= base_url('Admin/data_pengguna') ?>" class="nav-link">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="nav-icon fa-solid fa-users"></i>
                         <p>Data Pengguna</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('Admin/input_peta') ?>" class="nav-link">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <p>Input Peta</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="../widgets.html" class="nav-link">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <li class="nav-item" style="margin-top: 140%;">
+                    <a href="<?= base_url('Auth/logout_admin'); ?>" class="nav-link">
+                        <i class="nav-icon fa-solid fa-arrow-right-from-bracket"></i>
                         <p>Logout</p>
                     </a>
                 </li>
