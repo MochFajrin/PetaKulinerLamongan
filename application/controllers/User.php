@@ -149,63 +149,114 @@ class User extends CI_Controller
     {
         $this->form_validation->set_rules('first_name', 'Nama depan', 'required', array('required' => 'Tidak boleh kosong'));
         $this->form_validation->set_rules('last_name', 'Nama belakang', 'required', array('required' => 'Tidak boleh kosong'));
-        $this->form_validation->set_rules('password', 'Kata sandi', 'required', array('required' => 'Tidak boleh kosong'));
 
-        if ($this->form_validation->run() == false) {
-            $data = array(
-                'title' => 'Profil',
-                'content' => 'User/profil',
-                'profile' => $this->UsersModel->getUserProfileById($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id']),
-                'activity' => $this->UsersModel->getReportsByIdUser($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'])
-            );
-            $this->load->view('User/templates/wrapper', $data);
-        } else {
-            $profile_pict = $_FILES['profile_pict']['name'];
-
-            if ($profile_pict == '') {
-                $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+        if ($this->input->post('password') == null) {
+            if ($this->form_validation->run() == false) {
                 $data = array(
-                    'first_name' => $this->input->post('first_name'),
-                    'last_name' => $this->input->post('last_name'),
-                    'password' => password_hash(
-                        $this->input->post('password'),
-                        PASSWORD_DEFAULT
-                    ),
-                    'birth_date' => $this->input->post('birth_date'),
-                    'address' => $this->input->post('address'),
-                    'gender' => $this->input->post('gender'),
+                    'title' => 'Profil',
+                    'content' => 'User/profil',
+                    'profile' => $this->UsersModel->getUserProfileById($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id']),
+                    'activity' => $this->UsersModel->getReportsByIdUser($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'])
                 );
-                $this->UsersModel->updateUserProfile($id, $data);
-                redirect('User/profil');
+                $this->load->view('User/templates/wrapper', $data);
             } else {
-                $config['upload_path'] = './uploads/profile_pict';
-                $config['allowed_types'] = 'jpg|jpeg|png';
+                $profile_pict = $_FILES['profile_pict']['name'];
 
-                $this->load->library('upload', $config);
-
-                if (!$this->upload->do_upload('profile_pict')) {
-                    echo $this->upload->display_errors();
-                    echo '<br>';
-                    var_dump($_FILES['profile_pict']['name']);
+                if ($profile_pict == '') {
+                    $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+                    $data = array(
+                        'first_name' => $this->input->post('first_name'),
+                        'last_name' => $this->input->post('last_name'),
+                        'birth_date' => $this->input->post('birth_date'),
+                        'address' => $this->input->post('address'),
+                        'gender' => $this->input->post('gender'),
+                    );
+                    $this->UsersModel->updateUserProfile($id, $data);
+                    redirect('User/profil');
                 } else {
-                    $profile_pict = $this->upload->data('file_name');
-                }
+                    $config['upload_path'] = './uploads/profile_pict';
+                    $config['allowed_types'] = 'jpg|jpeg|png';
 
-                $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+                    $this->load->library('upload', $config);
+
+                    if (!$this->upload->do_upload('profile_pict')) {
+                        echo $this->upload->display_errors();
+                        echo '<br>';
+                        var_dump($_FILES['profile_pict']['name']);
+                    } else {
+                        $profile_pict = $this->upload->data('file_name');
+                    }
+
+                    $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+                    $data = array(
+                        'first_name' => $this->input->post('first_name'),
+                        'last_name' => $this->input->post('last_name'),
+                        'birth_date' => $this->input->post('birth_date'),
+                        'address' => $this->input->post('address'),
+                        'gender' => $this->input->post('gender'),
+                        'profile_pict' => $profile_pict
+                    );
+                    $this->UsersModel->updateUserProfile($id, $data);
+                    redirect('User/profil');
+                }
+            }
+        } else {
+            if ($this->form_validation->run() == false) {
                 $data = array(
-                    'first_name' => $this->input->post('first_name'),
-                    'last_name' => $this->input->post('last_name'),
-                    'password' => password_hash(
-                        $this->input->post('password'),
-                        PASSWORD_DEFAULT
-                    ),
-                    'birth_date' => $this->input->post('birth_date'),
-                    'address' => $this->input->post('address'),
-                    'gender' => $this->input->post('gender'),
-                    'profile_pict' => $profile_pict
+                    'title' => 'Profil',
+                    'content' => 'User/profil',
+                    'profile' => $this->UsersModel->getUserProfileById($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id']),
+                    'activity' => $this->UsersModel->getReportsByIdUser($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'])
                 );
-                $this->UsersModel->updateUserProfile($id, $data);
-                redirect('User/profil');
+                $this->load->view('User/templates/wrapper', $data);
+            } else {
+                $profile_pict = $_FILES['profile_pict']['name'];
+
+                if ($profile_pict == '') {
+                    $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+                    $data = array(
+                        'first_name' => $this->input->post('first_name'),
+                        'last_name' => $this->input->post('last_name'),
+                        'password' => password_hash(
+                            $this->input->post('password'),
+                            PASSWORD_DEFAULT
+                        ),
+                        'birth_date' => $this->input->post('birth_date'),
+                        'address' => $this->input->post('address'),
+                        'gender' => $this->input->post('gender'),
+                    );
+                    $this->UsersModel->updateUserProfile($id, $data);
+                    redirect('User/profil');
+                } else {
+                    $config['upload_path'] = './uploads/profile_pict';
+                    $config['allowed_types'] = 'jpg|jpeg|png';
+
+                    $this->load->library('upload', $config);
+
+                    if (!$this->upload->do_upload('profile_pict')) {
+                        echo $this->upload->display_errors();
+                        echo '<br>';
+                        var_dump($_FILES['profile_pict']['name']);
+                    } else {
+                        $profile_pict = $this->upload->data('file_name');
+                    }
+
+                    $id = $this->UsersModel->getUserByEmail($this->session->userdata('email'))['id'];
+                    $data = array(
+                        'first_name' => $this->input->post('first_name'),
+                        'last_name' => $this->input->post('last_name'),
+                        'password' => password_hash(
+                            $this->input->post('password'),
+                            PASSWORD_DEFAULT
+                        ),
+                        'birth_date' => $this->input->post('birth_date'),
+                        'address' => $this->input->post('address'),
+                        'gender' => $this->input->post('gender'),
+                        'profile_pict' => $profile_pict
+                    );
+                    $this->UsersModel->updateUserProfile($id, $data);
+                    redirect('User/profil');
+                }
             }
         }
     }

@@ -37,7 +37,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <strong><i class="fa-solid fa-envelope"></i> Education</strong>
+                            <strong><i class="fa-solid fa-envelope"></i> Email</strong>
                             <p class="text-muted"><?= $profile['email']; ?></p>
                             <hr>
                             <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
@@ -85,7 +85,8 @@
                                 <!-- /.tab-pane -->
 
                                 <div class="tab-pane" id="settings">
-                                    <form class="form-horizontal" action="<?= base_url('User/update_profile') ?>" method="POST" enctype="multipart/form-data">
+                                    <?php echo validation_errors(); ?>
+                                    <form id="formProfile" class="form-horizontal" action="<?= base_url('User/update_profile') ?>" method="POST" enctype="multipart/form-data">
                                         <div class="form-group row">
                                             <label for="profile_pict" class="col-sm-2 col-form-label">Foto Profil</label>
                                             <div class="col-sm-10">
@@ -111,13 +112,14 @@
                                                 <input type="text" value="<?= $profile['email']; ?>" class="form-control" placeholder="Email" disabled>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div id="row-password" class="form-group row">
                                             <label for="password" class="col-sm-2 col-form-label">Password</label>
+                                            <p class="text-danger"> <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?></p>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
+                                                <button type="button" id="buttonPassword" class="btn btn-warning btn-sm">Ubah Password</button>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class=" form-group row">
                                             <label for="birth_date" class="col-sm-2 col-form-label">Birth date</label>
                                             <div class="col-sm-10">
                                                 <input type="date" value="<?= $profile['birth_date']; ?>" class="form-control" id="birth_date" name="birth_date">
@@ -147,7 +149,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button id="submit-form" type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </form>
@@ -167,3 +169,22 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    const buttonPassword = document.getElementById('buttonPassword');
+    const rowPassword = document.getElementById('row-password');
+
+    buttonPassword.addEventListener('click', function(e) {
+        rowPassword.innerHTML = " <label for='password' class='col-sm-2 col-form-label'>Password</label><div  class='col-sm-10'><input id='formPassword' type='password' class='form-control' id='birth_date' name='password' placeholder='Masukkan password baru'></div>"
+        document.getElementById('submit-form').setAttribute('disabled', 'disabled');
+
+        const checkValidation = setInterval(() => {
+            if (document.getElementById('formPassword').value.length < 8) {
+                document.getElementById('submit-form').setAttribute('disabled', 'disabled');
+            } else if (document.getElementById('formPassword').value.length >= 8) {
+                clearInterval(checkValidation);
+                document.getElementById('submit-form').removeAttribute('disabled');
+            }
+        }, 0);
+
+    });
+</script>

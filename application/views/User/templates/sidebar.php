@@ -9,7 +9,7 @@
                 <?php if ($profile['profile_pict'] == null or  $profile['profile_pict'] == '') { ?>
                     <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/profile_pict/blank.png'); ?>">
                 <?php } else { ?>
-                    <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/profile_pict/' . $profile['profile_pict']); ?>">
+                    <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/profile_pict/' . $profile['profile_pict']); ?>" style="object-fit: cover;">
                 <?php } ?>
             </div>
             <div class="info">
