@@ -1,8 +1,6 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar bg-light elevation-4">
-    <a href="<?= base_url('assets/templates/adminLte/'); ?>index3.html">
-        <img src="<?= base_url('uploads/logo_brand/logo-lamongan-megilan.png'); ?>" class="border-bottom p-2" style="width :100%; " alt="">
-    </a>
+    <img src="<?= base_url('uploads/logo_brand/logo-lamongan-megilan.png'); ?>" class="border-bottom p-2" style="width :100%; ">
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex border-bottom">
             <div class="user-block">
@@ -41,12 +39,6 @@
                     <a href="<?= base_url('User/riwayat_laporan') ?>" class="nav-link">
                         <i class="nav-icon fa-solid fa-table mr-3"></i>
                         <p>Riwayat Laporan</p>
-                    </a>
-                </li>
-                <li class="nav-item" style="margin-top: 80%;">
-                    <a href="<?= base_url('Auth/logout'); ?>" class="nav-link">
-                        <i class="nav-icon fa-solid fa-arrow-right-from-bracket mr-3"></i>
-                        <p>Logout</p>
                     </a>
                 </li>
             </ul>

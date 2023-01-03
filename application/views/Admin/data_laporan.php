@@ -51,7 +51,7 @@
                                                 <td><span class="badge badge-pill badge-success"><?= $map->status; ?></span></td>
                                             <?php } ?>
                                             <td>
-                                                <a href="<?= base_url('Admin/detail_report/' . $map->id) ?>"><button class="btn btn-primary btn-sm">Detail</button></a>
+                                                <a href="<?= base_url('Admin/detail_laporan/' . $map->id) ?>"><button class="btn btn-primary btn-sm">Detail</button></a>
                                             </td>
                                         </tr>
                                     <?php } ?>

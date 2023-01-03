@@ -60,7 +60,7 @@
                                                 <td><span class="badge badge-pill badge-success"><?= $map->status; ?></span></td>
                                             <?php } ?>
                                             <td>
-                                                <a href="<?= base_url('Admin/detail_report/' . $map->id) ?>"><button class="btn btn-primary btn-sm">Detail</button></a>
+                                                <a href="<?= base_url('Admin/detail_laporan/' . $map->id) ?>"><button class="btn btn-primary btn-sm">Detail</button></a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -85,7 +85,7 @@
     var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="https://www.    mapbox.com/">Mapbox</a>',
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox/streets-v11'
     });
 

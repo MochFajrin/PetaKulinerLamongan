@@ -20,6 +20,11 @@
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('Auth/logout'); ?>" class="nav-link">
+                        <i class="nav-icon fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.navbar -->

@@ -31,7 +31,8 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <?= form_open_multipart('User/input_laporan'); ?>
+                        <?= form_open_multipart('User/update_laporan/' . $data['id']); ?>
+                        <?= form_error(); ?>
                         <div class="form-grub mb-3">
                             <label for="title">Judul Laporan</label>
                             <input type="text" id="title" name="title" class="form-control" value="<?= $data['title'] ?>" placeholder="Masukan judul laporan">
@@ -68,9 +69,9 @@
                         </div>
                         <div class="form-grub mb-3">
                             <label for="address">Jam Tutup</label>
-                            <input type="time" id="open_time" name="close_time" class="form-control">
+                            <input type="time" id="open_time" name="close_time" class="form-control" value="<?= $data['close_time'] ?>">
                         </div>
-                        <div class="form-grub mb-3">
+                        <div class=" form-grub mb-3">
                             <label for="description">Deskripsi</label>
                             <textarea name="description" id="description" class="form-control" placeholder="Masukkan deskripsi tambahans seperti menu apa saja yang dijual"></textarea>
                         </div>

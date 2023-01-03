@@ -29,17 +29,37 @@ class Admin extends CI_Controller
         $data = array(
             'title' => 'Data Pemetaan Kuliner di Lamongan',
             'content' => 'Admin/data_pengguna',
-            'users' => $this->UsersModel->getAllUserData()
+            'users' => $this->UsersModel->getAllUserData(),
+
         );
         $this->load->view('Admin/templates/wrapper', $data);
     }
     public function data_laporan()
     {
         $data = array(
-            'title' => 'Data Pemetaan Kuliner di Lamongan',
+            'title' => 'Data Laporan di Lamongan',
             'content' => 'Admin/data_laporan',
             'mapping' => $this->MappingModel->getMappingData('')
         );
         $this->load->view('Admin/templates/wrapper', $data);
+    }
+    public function detail_laporan($id)
+    {
+        $data = array(
+            'title' => 'Detail laporan',
+            'content' => 'Admin/detail_laporan',
+            'map' => $this->MappingModel->getMappingDataByIdReports($id)
+        );
+        $this->load->view('Admin/templates/wrapper', $data);
+    }
+    public function terima_laporan($id)
+    {
+        $this->MappingModel->acceptReport($id);
+        redirect('Admin/data_laporan');
+    }
+    public function tolak_laporan($id)
+    {
+        $this->MappingModel->declineReport($id);
+        redirect('Admin/data_laporan');
     }
 }

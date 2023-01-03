@@ -13,6 +13,10 @@ class UsersModel extends CI_Model
     {
         return $this->db->insert('tb_reports', $data);
     }
+    public function updateLaporan($data, $id)
+    {
+        return $this->db->where('id', $id)->update('tb_reports', $data);
+    }
     public function getUserByEmail($email)
     {
         $this->db->select('id')
@@ -23,6 +27,7 @@ class UsersModel extends CI_Model
     public function getUserProfileById($id)
     {
         $this->db->select('*')
+            ->select("date_format(birth_date, '%Y-%m-%d') as birth_date")
             ->from('tb_users')
             ->where('id', $id);
         return $this->db->get()->row_array();

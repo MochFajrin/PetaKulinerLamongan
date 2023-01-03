@@ -47,7 +47,7 @@
                                             <td><?= $user->email; ?></td>
                                             <td><?= $user->address; ?></td>
                                             <td><?= date('d-m-Y', round($user->join_date / 1000)); ?></td>
-                                            <td><a href=""><button class="btn btn-primary btn-sm">Detail</button></a></td>
+                                            <td><a href="<?= base_url('Discovery/user_profile/' . $user->id); ?>"><button class="btn btn-primary btn-sm">Detail</button></a></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
