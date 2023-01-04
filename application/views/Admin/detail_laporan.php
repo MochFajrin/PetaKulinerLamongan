@@ -16,6 +16,7 @@
         </div><!-- /.container-fluid -->
     </section>
 
+
     <!-- Main content -->
     <section class="content">
 
@@ -25,15 +26,32 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <h3 class="d-inline-block d-sm-none"><?= $map['title']; ?></h3>
+
                         <div class="col-12">
-                            <img src="<?= base_url('uploads/thumbnail_peta/' . $map['report_thumb']) ?>" class="product-image">
+
+                            <strong>Location</strong>
+                            <div class="card-body">
+                                <div id="map" style="width: 100%; height: 400px;"></div>
+                            </div>
+                            <div class="form-group"><strong>Koordinat :</strong> <?= $map['latitude'] . '  ,  ' .  $map['longitude']; ?></div>
+
                         </div>
-                        <div class="col-12 product-image-thumbs">
-                            <p><strong>Posted by : </strong><?= $map['username']; ?></p>
+
+                        <div class="col-12">
+                            <figure class="col-12 ">
+                                <img src="<?= base_url('uploads/thumbnail_peta/' . $map['report_thumb']) ?>" class="product-image">
+                                <figcaption>
+                                    <p><strong>Posted by : </strong><?= $map['username']; ?></p>
+                                </figcaption>
+                            </figure>
                         </div>
                     </div>
+                    <!-- Pemetaan -->
+
+
+
                     <div class="col-12 col-sm-6">
-                        <h3 class="my-3"><?= $map['title']; ?></h3>
+                        <h3 class="my-3"><strong><?= $map['title']; ?></strong></h3>
                         <h4>Information :</h4>
                         <div class="form-group"><strong>Nama Pemilik :</strong> <?= $map['owner_name']; ?></div>
                         <div class="form-group"><strong>Nama Kuliner :</strong> <?= $map['culinary_name']; ?></div>
@@ -64,3 +82,40 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    //type
+    var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11'
+    });
+
+    var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/satellite-v9'
+    });
+
+
+    var openStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+
+    var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/dark-v10'
+    });
+
+    const map = L.map('map', {
+        center: [<?= $map['latitude'] ?>, <?= $map['longitude'] ?>],
+        zoom: 18,
+        layers: [streets],
+    });
+
+
+    L.marker([<?= $map['latitude']; ?>, <?= $map['longitude'] ?>]).bindPopup("<img src='<?= base_url('uploads/thumbnail_peta/' . $map['report_thumb']) ?>' width='100px'><br><strong><?= $map['culinary_name'] ?></strong>").addTo(map);
+</script>

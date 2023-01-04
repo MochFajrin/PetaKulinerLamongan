@@ -72,6 +72,8 @@ class User extends CI_Controller
         $this->form_validation->set_rules('description', 'Deskripsi', 'required', array('required' => 'Silahkan isi deskripsi terlebih dahulu'));
         $this->form_validation->set_rules('latitude', 'latitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
         $this->form_validation->set_rules('longitude', 'longitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
+        $this->form_validation->set_rules('report_thumb', 'Foto', 'required', array('required' => 'Silahkan masukkan foto tempat usaha'));
+
 
         if ($this->form_validation->run() == false) {
             $url = 'http://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=3524';
@@ -84,8 +86,10 @@ class User extends CI_Controller
                 'content' => 'User/input_laporan',
                 'mapping' => $this->MappingModel->getMappingData(),
                 'culinaries' => $this->CulinariesModel->getCulinaries(),
-                'list_kecamatan' => $kecamatan->kecamatan
+                'list_kecamatan' => $kecamatan->kecamatan,
+                'profile' => $this->UsersModel->getUserProfileById($this->UsersModel->getUserByEmail($this->session->userdata('email'))['id']),
             );
+            $this->load->view('User/templates/wrapper', $data);
             $this->load->view('User/templates/wrapper', $data);
         } else {
             $report_thumb = $_FILES['report_thumb']['name'];
