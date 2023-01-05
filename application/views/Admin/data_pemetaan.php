@@ -114,7 +114,13 @@
         layers: [streets],
     });
 
-
+    const baseLayers = {
+        'Streets': streets,
+        'Satellite': satellite,
+        'Open Street Map ': openStreetMap,
+        'Dark': dark
+    };
+    const layerControl = L.control.layers(baseLayers).addTo(map);
 
 
     <?php foreach ($mapping as $map) { ?>

@@ -17,10 +17,8 @@ alertMessage.addEventListener("click", () => {
 });
 
 //get current location
-const latitude = document.getElementById("Latitude");
-const longitude = document.getElementById("Longitude");
-latitude.value = -6.980599;
-longitude.value = 112.325913;
+let latitude = -6.980599;
+let longitude = 112.325913;
 
 //type
 
@@ -30,7 +28,7 @@ const streets = L.tileLayer(
 		attribution:
 			'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.    mapbox.com/">Mapbox</a>',
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		id: "mapbox/streets-v11",
 	}
 );
@@ -66,7 +64,7 @@ const dark = L.tileLayer(
 );
 
 const map = L.map("map", {
-	center: [latitude.value, longitude.value],
+	center: [latitude, longitude],
 	zoom: 10,
 	layers: [streets],
 });
@@ -78,17 +76,6 @@ const baseLayers = {
 	Dark: dark,
 };
 const layerControl = L.control.layers(baseLayers).addTo(map);
-
-//get coordinat
-const latInput = document.querySelector("[name=latitude]");
-const lngInput = document.querySelector("[name=longitude]");
-
-const currentLocation = [-2.4948486736431805, 118.7519626470474];
-map.attributionControl.setPrefix(false);
-
-const marker = new L.marker(currentLocation, {
-	draggable: "true",
-});
 
 //get current location
 
@@ -106,16 +93,16 @@ function showPosition(position) {
 		text.setAttribute("class", "text-danger");
 		text.innerText =
 			"Jika lokasi dirasa kurang akurat, tolong klik peta dan atur sesuai lokasi anda";
-		latitude.value = position.coords.latitude;
-		longitude.value = position.coords.longitude;
+		latitude = position.coords.latitude;
+		longitude = position.coords.longitude;
 
-		const marker = L.marker([latitude.value, longitude.value], {
+		const marker = L.marker([latitude, longitude], {
 			draggable: "true",
 		});
 		marker.bindPopup("Your Location");
 		marker.addTo(map);
 
-		console.log(latitude.value + " " + longitude.value);
+		console.log(latitude + " " + longitude);
 
 		marker.on("dragend", function (event) {
 			const position = marker.getLatLng();
@@ -127,7 +114,7 @@ function showPosition(position) {
 				.update();
 			$("#Latitude").val(position.lat);
 			$("#Longitude").val(position.lng);
-			console.log(latitude.value + " " + longitude.value);
+			console.log(latitude + ", " + longitude);
 		});
 	}, 5000);
 }

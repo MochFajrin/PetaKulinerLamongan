@@ -7,6 +7,10 @@
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url() ?>assets/templates/landing_page/assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/favicon/favicon.ico'); ?>">
+    <!-- lefleat -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 </head>
 
 <body>
@@ -49,35 +53,24 @@
     <!--features-->
     <div id="features">
         <div class="container">
-            <h2 class="text-center">Apa yang saya tawarkan</h2>
-            <div class="row text-center">
+            <h2 class="text-center mt-5">Apa yang kami tawarkan</h2>
+            <div class="row ">
                 <div class="col-md-4 features">
-                    <img src="<?= base_url() ?>assets/templates/landing_page/assets/img/worldwide.png" class="img-fluid" alt="">
-                    <h4>Menggunakan </h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and morerecently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    <img src="<?= base_url() ?>assets/templates/landing_page/assets/img/worldwide.png" class="rounded mx-auto d-block" alt="">
+                    <h4 class="text-center">Kebebasan Berbagi Lokasi Kuliner</h4>
+                    <p>Pengguna tidak hanya bisa mendapatkan lokasi kuliner di kota lamongan, Tapi juga bisa ikut berkontribusi untuk saling berbagi lokasi usaha sebuah kuliner agar bisa memberikan informasi usaha-usaha kuliner khas lamongan yang belum ada di Website ini.</p>
                 </div>
 
                 <div class="col-md-4 features">
-                    <img src="<?= base_url() ?>assets/templates/landing_page/assets/img/map1.png" class="img-fluid" alt="">
-                    <h4>SAMPLE 2</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially
-                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and morerecently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    <img src="<?= base_url() ?>assets/templates/landing_page/assets/img/map1.png" class="rounded mx-auto d-block" alt="">
+                    <h4 class="text-center">Peta Kuliner Khas Lamongan</h4>
+                    <p>Memberikan informasi mengenai lokasi lokasi kuliner khas yang ada di kota lamongan, Mulai dari ukm kecil, rombongan, lesehan dan sebagainya</p>
                 </div>
 
                 <div class="col-md-4 features">
-                    <img src="<?= base_url() ?>assets/templates/landing_page/assets/img/map2.png" class="img-fluid" alt="">
-                    <h4>SAMPLE 1</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially
-                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and morerecently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    <img src="<?= base_url() ?>assets/templates/landing_page/assets/img/map2.png" class="rounded mx-auto d-block" alt="">
+                    <h4 class="text-center">Menggunakan Teknologi Leaflet</h4>
+                    <p>Leaflet adalah library JavaScript yang open source untuk peta interaktif yang mobile friendly. Beratnya hanya sekitar 42 KB JS dan memiliki semua fitur pemetaan yang dibutuhkan sebagian besar developer.</p>
                 </div>
 
             </div>
@@ -87,21 +80,24 @@
     <!--pricing-->
     <section id="pricing">
         <div class="container">
-            <h2 class="text-center mb-3">menagapa harus melihat GIS</h2>
+            <h2 class="text-center mb-4">Mengapa harus melihat Peta Kuliner Lamongan</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <h4>benefit yang didapatkan</h4>
+                    <h4 class="mb-5">benefit yang didapatkan</h4>
                     <ul>
-                        <li><span>contoh sample 1</span><a href="#" class="btn btn-primary">nominal 1</a></li>
-                        <li><span>contoh sample 2</span><a href="#" class="btn btn-primary">nominal 2</a></li>
-                        <li><span>contoh sample 3</span><a href="#" class="btn btn-primary">nominal 3</a></li>
-                        <li><span>contoh sample 4</span><a href="#" class="btn btn-primary">nominal 4</a></li>
-                        <li><span>contoh sample 5</span><a href="#" class="btn btn-primary">nominal 5</a></li>
-                        <li><span>contoh sample 6</span><a href="#" class="btn btn-primary">nominal 6</a></li>
+                        <li><span class="btn btn-primary">1</span> Mempermudahkan pengguna bila ingin mengetahui lokasi yang menyediakan kuliner khas lamongan</li>
+                        <li><span class="btn btn-primary">2</span>Membantu para pengusaha yang menyediakan kuliner khas lamongan agar usahanya dapat diketahui oleh banyak orang melalui platform ini</li>
+                        <li><span class="btn btn-primary">3</span>Mengajak masyarakat untuk ikut berkontribusi membagikan lokasi usaha yang menyediakan kuliner khas lamongan</li>
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <img src="<?= base_url() ?>assets/templates/landing_page/assets/img/maps2.jpg" class="img-fluid" alt="">
+                    <div class="container-fluid">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="map" style="width: 100%; height: 400px;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,6 +115,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script>
+        //type
+        var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11'
+        });
+
+        var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/satellite-v9'
+        });
+
+
+        var openStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+
+        var dark = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/dark-v10'
+        });
+
+        const map = L.map('map', {
+            center: [-6.995182229772562, 112.33836709376861],
+            zoom: 11,
+            layers: [streets],
+        });
+
+
+
+
+        <?php foreach ($mapping as $map) { ?>
+            L.marker([<?= $map->latitude ?>, <?= $map->longitude ?>]).bindPopup("<img src='<?= base_url('uploads/thumbnail_peta/' . $map->thumb) ?>' width = '100px'><br><strong><?= $map->culinary_name ?></strong> ").addTo(map);
+        <?php } ?>
+    </script>
 </body>
 
 </html>

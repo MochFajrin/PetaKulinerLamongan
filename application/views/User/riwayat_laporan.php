@@ -59,7 +59,11 @@
                                             <td><?= $report->culinary_name; ?></td>
                                             <td><?= $report->owner_name; ?></td>
                                             <td><?= $report->nama_kecamatan; ?></td>
-                                            <td><span id="status" class="badge badge-pill badge-success"><?= $report->status; ?></span></td>
+                                            <?php if ($report->status == 'pending') { ?>
+                                                <td><span class="badge badge-pill badge-danger"><?= $report->status; ?></span></td>
+                                            <?php } else { ?>
+                                                <td><span class="badge badge-pill badge-success"><?= $report->status; ?></span></td>
+                                            <?php } ?>
                                             <td class="text-center">
                                                 <a href=""><button class="btn btn-primary btn-sm">Detail</button></a>
                                                 <a href="<?= base_url('User/form_update/' . $report->id) ?>"><button class="btn btn-warning btn-sm mx-3">Edit</button></a>

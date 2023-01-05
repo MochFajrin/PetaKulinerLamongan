@@ -72,8 +72,6 @@ class User extends CI_Controller
         $this->form_validation->set_rules('description', 'Deskripsi', 'required', array('required' => 'Silahkan isi deskripsi terlebih dahulu'));
         $this->form_validation->set_rules('latitude', 'latitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
         $this->form_validation->set_rules('longitude', 'longitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
-        $this->form_validation->set_rules('report_thumb', 'Foto', 'required', array('required' => 'Silahkan masukkan foto tempat usaha'));
-
 
         if ($this->form_validation->run() == false) {
             $url = 'http://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=3524';

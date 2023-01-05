@@ -31,6 +31,7 @@
                                         <th>No</th>
                                         <th>Judul Laporan</th>
                                         <th>Nama Pengunggah</th>
+                                        <th>Nama Pemilik</th>
                                         <th>Address</th>
                                         <th>Status</th>
                                         <th>Kelolah</th>
@@ -43,6 +44,7 @@
                                         <tr>
                                             <td><?= $no++; ?></td>
                                             <td><?= $map->title; ?></td>
+                                            <td><?= $map->username; ?></td>
                                             <td><?= $map->owner_name; ?></td>
                                             <td><?= $map->address; ?></td>
                                             <?php if ($map->status == 'pending') { ?>

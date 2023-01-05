@@ -26,7 +26,7 @@
                         <div id="map" style="width: 100%; height: 400px;"></div>
                         <div class="form-grub mb-3 mt-4">
                             <p id="text-danger" class="text-success">Silahkan Masukkan lokasi anda</p>
-                            <!-- <p class="text-danger">Jika lokasi dirasa kurang akurat, tolong klik peta dan atur sesuai lokasi anda</p> -->
+                            <?= form_error('latitude', '<small class="text-danger pl-3">', '</small>'); ?>
                             <button class="btn btn-success btn-sm form-control" onclick="getLocation();">Auto Check</button>
                         </div>
                     </div>
@@ -69,11 +69,11 @@
                         </div>
                         <div class="form-grub mb-3">
                             <label for="open_time">Jam Buka</label>
-                            <input type="time" id="open_time" name="open_time" class="form-control">
+                            <input type="time" id="open_time" name="open_time" placeholder="Masukkan jam buka" class="form-control">
                         </div>
                         <div class="form-grub mb-3">
-                            <label for="close">Jam Tutup</label>
-                            <input type="time" id="close_time" name="close_time" class="form-control">
+                            <label for="close_time">Jam Tutup</label>
+                            <input type="time" id="close_time" placeholder="Masukan jam tutup" name="close_time" class="form-control">
                         </div>
                         <div class="form-grub mb-3">
                             <label for="description">Deskripsi</label>
@@ -84,11 +84,10 @@
                             <label for="exampleInputFile">Foto Toko, Gerobak, atau Kedai</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" id="report_thumb" name="report_thumb" id="report_thumb" class="custom-file-input">
+                                    <input type="file" id="report_thumb" name="report_thumb" class="custom-file-input">
                                     <label class="custom-file-label">Choose file</label>
                                 </div>
                             </div>
-                            <?= form_error('report_thumb', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-grub mb-3">
                             <input type="hidden" id="Latitude" name="latitude" class="form-control">

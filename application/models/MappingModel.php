@@ -55,7 +55,7 @@ class MappingModel extends CI_Model
     public function getMappingData()
     {
         $this->db->select('r.id as id')
-            ->select('r.id_user')
+            ->select('u.username as username')
             ->select('c.name as culinary_name')
             ->select('r.title as title')
             ->select('r.description as description')
@@ -78,7 +78,7 @@ class MappingModel extends CI_Model
     public function getMappingDataByIdUser($id)
     {
         $this->db->select('r.id as id')
-            ->select('r.id_user')
+            ->select('u.username as username')
             ->select('c.name as culinary_name')
             ->select('r.title as title')
             ->select('r.description as description')

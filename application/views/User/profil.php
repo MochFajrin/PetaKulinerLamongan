@@ -66,9 +66,13 @@
                                     <?php foreach ($activity as $act) { ?>
                                         <div class="post">
                                             <div class="user-block">
-                                                <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/thumbnail_peta/' . $act->report_thumb); ?>">
+                                                <?php if ($act->report_thumb == null) { ?>
+                                                    <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/thumbnail_peta/empty_map.jpg'); ?>">
+                                                <?php } else { ?>
+                                                    <img class="img-circle img-bordered-sm" src="<?= base_url('uploads/thumbnail_peta/' . $act->report_thumb); ?>">
+                                                <?php } ?>
                                                 <span class="username">
-                                                    <a href="#"><?= $act->title ?></a>
+                                                    <a href="<?= base_url('Discovery/detail_kuliner/' . $act->id); ?>"><?= $act->title ?></a>
                                                     <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                                                 </span>
                                                 <span class="description">Shared publicly <?= date('d-m-Y ', round($act->report_time / 1000)); ?></span>
