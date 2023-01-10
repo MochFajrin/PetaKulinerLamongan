@@ -19,26 +19,26 @@
 
                 <li class="nav-item mb-2">
                     <a href="<?= base_url('Discovery/search') ?>" class="nav-link">
-                        <i class="nav-icon fa-solid fa-house mr-3"></i>
-                        <p>Beranda</p>
+                        <i class="nav-icon fa-solid fa-house mr-3 text-dark"></i>
+                        <p class="text-dark">Beranda</p>
                     </a>
                 </li>
                 <li class="nav-item mb-2">
                     <a href="<?= base_url('User/profil'); ?>" class="nav-link">
-                        <i class="nav-icon fa-solid fa-user mr-3"></i>
-                        <p>Profil Saya</p>
+                        <i class="nav-icon fa-solid fa-user mr-3 text-dark"></i>
+                        <p class="text-dark">Profil Saya</p>
                     </a>
                 </li>
                 <li class="nav-item mb-2">
                     <a href="<?= base_url('User/form_input_laporan') ?>" class="nav-link">
-                        <i class="nav-icon fa-solid fa-street-view mr-3"></i>
-                        <p>Kirim Laporan</p>
+                        <i class="nav-icon fa-solid fa-street-view mr-3 text-dark"></i>
+                        <p class="text-dark">Kirim Laporan</p>
                     </a>
                 </li>
                 <li class="nav-item mb-2">
                     <a href="<?= base_url('User/riwayat_laporan') ?>" class="nav-link">
-                        <i class="nav-icon fa-solid fa-table mr-3"></i>
-                        <p>Riwayat Laporan</p>
+                        <i class="nav-icon fa-solid fa-table mr-3 text-dark"></i>
+                        <p class="text-dark">Riwayat Laporan</p>
                     </a>
                 </li>
             </ul>

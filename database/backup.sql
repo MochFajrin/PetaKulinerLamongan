@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `tb_admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_admins` (
-  `id` varchar(36) NOT NULL DEFAULT uuid(),
+  `id` varchar(36) NOT NULL DEFAULT (uuid()),
   `username` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS `tb_culinaries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_culinaries` (
-  `id` varchar(36) NOT NULL DEFAULT uuid(),
+  `id` varchar(36) NOT NULL DEFAULT (uuid()),
   `id_admin` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
@@ -81,7 +81,7 @@ DROP TABLE IF EXISTS `tb_reports`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_reports` (
-  `id` varchar(100) NOT NULL DEFAULT uuid(),
+  `id` varchar(100) NOT NULL DEFAULT (uuid()),
   `id_user` varchar(100) NOT NULL,
   `id_culinary` varchar(100) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -122,7 +122,7 @@ DROP TABLE IF EXISTS `tb_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_users` (
-  `id` varchar(100) NOT NULL DEFAULT uuid(),
+  `id` varchar(100) NOT NULL DEFAULT (uuid()),
   `username` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,

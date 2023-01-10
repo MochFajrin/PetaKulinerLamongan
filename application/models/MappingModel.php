@@ -24,7 +24,8 @@ class MappingModel extends CI_Model
             ->from('tb_reports as r')
             ->join('tb_users as u', 'r.id_user = u.id')
             ->join('tb_culinaries as c', 'r.id_culinary = c.id')
-            ->where('status', "approved");
+            ->where('r.status', "approved")
+            ->order_by('r.report_time', 'desc');
         return $this->db->get()->result();
     }
     public function viewMapByCulinaryName($culinary_name)
@@ -47,8 +48,9 @@ class MappingModel extends CI_Model
             ->from('tb_reports as r')
             ->join('tb_users as u', 'r.id_user = u.id')
             ->join('tb_culinaries as c', 'r.id_culinary = c.id')
-            ->where('status', "approved")
-            ->like('c.name', "$culinary_name");
+            ->where('r.status', "approved")
+            ->like('c.name', "$culinary_name")
+            ->order_by('r.report_time', 'desc');
         return $this->db->get()->result();
     }
 
@@ -71,7 +73,8 @@ class MappingModel extends CI_Model
             ->select('r.report_thumb as thumb')
             ->from('tb_reports as r')
             ->join('tb_users as u', 'r.id_user = u.id')
-            ->join('tb_culinaries as c', 'r.id_culinary = c.id');
+            ->join('tb_culinaries as c', 'r.id_culinary = c.id')
+            ->order_by('r.report_time', 'desc');
         return $this->db->get()->result();
     }
 
@@ -95,7 +98,8 @@ class MappingModel extends CI_Model
             ->from('tb_reports as r')
             ->join('tb_users as u', 'r.id_user = u.id')
             ->join('tb_culinaries as c', 'r.id_culinary = c.id')
-            ->where('id_user', $id);
+            ->where('id_user', $id)
+            ->order_by('report_time', 'desc');
         return $this->db->get()->result();
     }
 
@@ -103,6 +107,7 @@ class MappingModel extends CI_Model
     {
         $this->db->select('r.id as id')
             ->select('u.username as username')
+            ->select('c.id as id_culinary')
             ->select('c.name as culinary_name')
             ->select('r.title as title')
             ->select('r.description as description')
@@ -119,7 +124,8 @@ class MappingModel extends CI_Model
             ->from('tb_reports as r')
             ->join('tb_users as u', 'r.id_user=u.id')
             ->join('tb_culinaries as c', 'r.id_culinary=c.id')
-            ->where('r.id', $id_report);
+            ->where('r.id', $id_report)
+            ->order_by('r.report_time', 'desc');
         return $this->db->get()->row_array();
     }
     public function acceptReport($id)

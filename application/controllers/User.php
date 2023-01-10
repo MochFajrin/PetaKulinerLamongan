@@ -72,6 +72,10 @@ class User extends CI_Controller
         $this->form_validation->set_rules('description', 'Deskripsi', 'required', array('required' => 'Silahkan isi deskripsi terlebih dahulu'));
         $this->form_validation->set_rules('latitude', 'latitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
         $this->form_validation->set_rules('longitude', 'longitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
+        $this->form_validation->set_rules('open_hour', 'Jam Buka', 'required', array('required' => 'Silahkan masukan jam buka terlebih dahulu'));
+        $this->form_validation->set_rules('open_min', 'Menit buka', 'required', array('required' => 'Silahkan menit tutup lokasi terlebih dahulu'));
+        $this->form_validation->set_rules('close_hour', 'Jam tutup', 'required', array('required' => 'Silahkan masukan jam tutup lokasi terlebih dahulu'));
+        $this->form_validation->set_rules('close_min', 'Menit tutup', 'required', array('required' => 'Silahkan masukan menit tutup lokasi terlebih dahulu'));
 
         if ($this->form_validation->run() == false) {
             $url = 'http://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=3524';
@@ -118,8 +122,8 @@ class User extends CI_Controller
                 'longitude' => $this->input->post('longitude'),
                 'report_thumb' => $this->input->post('report_thumb'),
                 'report_time' => round(microtime(true) * 1000),
-                'open_time' => $this->input->post('open_time'),
-                'close_time' => $this->input->post('close_time'),
+                'open_time' => $this->input->post('open_hour') . ':' . $this->input->post('open_min'),
+                'close_time' => $this->input->post('close_hour') . ':' . $this->input->post('close_min'),
                 'report_thumb' => $report_thumb
             );
             $this->UsersModel->insertLaporan($data);
@@ -152,6 +156,10 @@ class User extends CI_Controller
         $this->form_validation->set_rules('description', 'Deskripsi', 'required', array('required' => 'Silahkan isi deskripsi terlebih dahulu'));
         $this->form_validation->set_rules('latitude', 'latitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
         $this->form_validation->set_rules('longitude', 'longitude', 'required', array('required' => 'Silahkan masukan koordinat lokasi terlebih dahulu'));
+        $this->form_validation->set_rules('open_hour', 'Jam Buka', 'required', array('required' => 'Silahkan masukan jam buka terlebih dahulu'));
+        $this->form_validation->set_rules('open_min', 'Menit buka', 'required', array('required' => 'Silahkan menit tutup lokasi terlebih dahulu'));
+        $this->form_validation->set_rules('close_hour', 'Jam tutup', 'required', array('required' => 'Silahkan masukan jam tutup lokasi terlebih dahulu'));
+        $this->form_validation->set_rules('close_min', 'Menit tutup', 'required', array('required' => 'Silahkan masukan menit tutup lokasi terlebih dahulu'));
 
         if ($this->form_validation->run() == false) {
             redirect('User/form_update/' . $id);
@@ -184,8 +192,8 @@ class User extends CI_Controller
                 'longitude' => $this->input->post('longitude'),
                 'report_thumb' => $this->input->post('report_thumb'),
                 'report_time' => round(microtime(true) * 1000),
-                'open_time' => $this->input->post('open_time'),
-                'close_time' => $this->input->post('close_time'),
+                'open_time' => $this->input->post('open_hour') . ':' . $this->input->post('open_min'),
+                'close_time' => $this->input->post('close_hour') . ':' . $this->input->post('close_min'),
                 'report_thumb' => $report_thumb
             );
             $this->UsersModel->updateLaporan($data, $id);

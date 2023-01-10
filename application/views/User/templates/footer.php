@@ -53,16 +53,6 @@
 </script>
 <!-- font awesome -->
 <script src="https://kit.fontawesome.com/fd87c96c60.js" crossorigin="anonymous"></script>
-<!-- timepicker -->
-<script src="<?= base_url('assets/templates/adminLte/'); ?>plugins/daterangepicker/daterangepicker.js"></script>
-<script>
-    $('#open_time').datetimepicker({
-        format: 'LT'
-    });
-    $('#close_time').datetimepicker({
-        format: 'LT'
-    });
-</script>
 </body>
 
 </html>

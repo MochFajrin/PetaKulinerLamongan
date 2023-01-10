@@ -44,7 +44,7 @@
                         <div class="form-grub mb-3">
                             <label for="culinary_name">Nama Kuliner</label>
                             <select id="id_culinary" name="id_culinary" class="form-control">
-                                <option value=""></option>
+                                <option selected value="<?= $data['id_culinary'] ?>"><?= $data['culinary_name']; ?></option>
                                 <?php foreach ($culinaries as $culinary) { ?>
                                     <option value="<?= $culinary->id; ?>"><?= $culinary->name; ?></option>
                                 <?php } ?>
@@ -53,7 +53,7 @@
                         <div class="form-grub mb-3">
                             <label for="culinary_name">Nama Kecamatan</label>
                             <select id="nama_kecamatan" name="nama_kecamatan" class="form-control">
-                                <option value=""></option>
+                                <option option value="<?= $data['nama_kecamatan']; ?>"><?= $data['nama_kecamatan']; ?></option>
                                 <?php foreach ($list_kecamatan as $kecamatan) { ?>
                                     <option value="<?= $kecamatan->nama; ?>"><?= $kecamatan->nama; ?></option>
                                 <?php } ?>
@@ -64,12 +64,52 @@
                             <input type="text" id="address" name="address" class="form-control" value="<?= $data['address'] ?>" placeholder="Masukkan alamat dari usaha kuliner">
                         </div>
                         <div class="form-grub mb-3">
-                            <label for="open_time">Jam Buka</label>
-                            <input type="time" id="open_time" name="open_time" class="form-control" value="<?= $data['open_time'] ?>">
+                            <label>Jam Buka</label><br>
+                            <select name="open_hour">
+                                <?php for ($i = 0; $i <= 23; $i++) {
+                                    if ($i < 10) { ?>
+                                        <option value="<?= '0' . $i; ?>"><?= '0' . $i; ?></option>
+                                    <?php } else { ?>
+                                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                            <select name="open_min" id="">
+                                <?php for ($i = 0; $i <= 59; $i++) {
+                                    if ($i < 10) { ?>
+                                        <option value="<?= '0' . $i; ?>"><?= '0' . $i; ?></option>
+                                    <?php } else { ?>
+                                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                            <span class="text-muted">WIB | Waktu yang lama : <?= $data['open_time'] . ' WIB'; ?></span>
+                            <?= form_error('open_hour', '<p class="text-danger pl-3">', '</p>'); ?>
+                            <?= form_error('open_min', '<p class="text-danger pl-3">', '</p>'); ?>
                         </div>
                         <div class="form-grub mb-3">
-                            <label for="address">Jam Tutup</label>
-                            <input type="time" id="open_time" name="close_time" class="form-control" value="<?= $data['close_time'] ?>">
+                            <label>Jam Tutup</label><br>
+                            <select name="close_hour" id="">
+                                <?php for ($i = 0; $i <= 23; $i++) {
+                                    if ($i < 10) { ?>
+                                        <option value="<?= '0' . $i; ?>"><?= '0' . $i; ?></option>
+                                    <?php } else { ?>
+                                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                            <select name="close_min" id="">
+                                <?php for ($i = 0; $i <= 59; $i++) {
+                                    if ($i < 10) { ?>
+                                        <option value="<?= '0' . $i; ?>"><?= '0' . $i; ?></option>
+                                    <?php } else { ?>
+                                        <option value="<?= $i; ?>"><?= $i; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                            <span class="text-muted">WIB | Waktu yang lama : <?= $data['close_time'] . ' WIB'; ?></span>
+                            <?= form_error('close_hour', '<p class="text-danger pl-3">', '</p>'); ?>
+                            <?= form_error('close_min', '<p class="text-danger pl-3">', '</p>'); ?>
                         </div>
                         <div class=" form-grub mb-3">
                             <label for="description">Deskripsi</label>
@@ -85,10 +125,10 @@
                             </div>
                         </div>
                         <div class="form-grub mb-3">
-                            <input type="hidden" id="Latitude" name="latitude" class="form-control">
+                            <input type="hidden" id="Latitude" name="latitude" value="<?= $data['latitude'] ?>" class="form-control">
                         </div>
                         <div class="form-grub mb-3">
-                            <input type="hidden" id="Longitude" name="longitude" class="form-control">
+                            <input type="hidden" id="Longitude" value="<?= $data['longitude'] ?>" name="longitude" class="form-control">
                         </div>
                         <div class="form-grub mb-3">
                             <button type="submit" class="btn btn-primary btn-sm form-control">Publish Your Report</button>
@@ -104,3 +144,121 @@
     <!-- Main content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+    //show message
+    const alertMessage = document.getElementsByClassName("btn btn-success")[0];
+    let latVal = document.getElementById("Latitude");
+    let longVal = document.getElementById("Longitude");
+
+    alertMessage.addEventListener("click", () => {
+        const text = document.getElementById("text-danger");
+        text.setAttribute("class", "text-warning");
+        alertMessage.setAttribute("disabled", "disabled");
+
+        let counter = 5;
+        const fetchLocation = setInterval(() => {
+            text.innerText = `Tunggu..., Memproses lokasi anda ${counter}`;
+            counter--;
+            if (counter == 0) {
+                clearInterval(fetchLocation);
+            }
+        }, 1000);
+    });
+
+    //get current location
+    let latitude = <?= $data['latitude'] ?>;
+    let longitude = <?= $data['longitude'] ?>;
+
+    //type
+
+    const streets = L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw", {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: "mapbox/streets-v11",
+        }
+    );
+
+    const satellite = L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw", {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: "mapbox/satellite-v9",
+        }
+    );
+
+    const openStreetMap = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }
+    );
+
+    const dark = L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw", {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: "mapbox/dark-v10",
+        }
+    );
+
+    const map = L.map("map", {
+        center: [latitude, longitude],
+        zoom: 10,
+        layers: [streets],
+    });
+
+    const baseLayers = {
+        Streets: streets,
+        Satellite: satellite,
+        "Open Street Map ": openStreetMap,
+        Dark: dark,
+    };
+    const layerControl = L.control.layers(baseLayers).addTo(map);
+
+    //get current location
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alertMessage.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    let currentLocation = [latitude, longitude];
+
+    function showPosition(position) {
+        setTimeout(() => {
+            const text = document.getElementById("text-danger");
+            text.setAttribute("class", "text-danger");
+            text.innerText =
+                "Jika lokasi dirasa kurang akurat, tolong klik peta dan atur sesuai lokasi anda";
+            latVal.value = position.coords.latitude;
+            longVal.value = position.coords.longitude;
+            console.log(latVal.value + " " + longVal.value);
+            const marker = L.marker([latVal.value, longVal.value], {
+                draggable: "true",
+            });
+            marker.bindPopup("Your Location");
+            marker.addTo(map);
+
+            marker.on("dragend", function(event) {
+                const position = marker.getLatLng();
+                marker
+                    .setLatLng(position, {
+                        currentLocation,
+                    })
+                    .bindPopup("Your Location")
+                    .update();
+                $("#Latitude").val(position.lat);
+                $("#Longitude").val(position.lng);
+
+                console.log(latVal.value + ", " + longVal.value);
+            });
+        }, 5000);
+    }
+    L.marker([<?= $data['latitude']; ?>, <?= $data['longitude'] ?>]).bindPopup("<img src='<?= base_url('uploads/thumbnail_peta/' . $data['report_thumb']) ?>' width='100px'><br><strong><?= $data['culinary_name'] ?></strong>").addTo(map);
+</script>

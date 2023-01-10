@@ -7,6 +7,8 @@
     <title><?= $title ?> | Peta Kuliner Lamongan</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/favicon/favicon.ico'); ?>">
+    <!-- bootstrap 4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- custom css -->
     <link rel="stylesheet" href="<?= base_url('assets/style/custom_style.css') ?>">
     <!-- Google Font: Source Sans Pro -->
@@ -24,9 +26,4 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
     <!-- jQuery -->
     <script src="<?= base_url('assets/templates/adminLte/'); ?>plugins/jquery/jquery.min.js"></script>
-
-    <!-- Include Bootstrap DateTimePicker CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
 </head>
