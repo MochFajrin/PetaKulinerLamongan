@@ -65,7 +65,7 @@
                                                 <td><span class="badge badge-pill badge-success"><?= $report->status; ?></span></td>
                                             <?php } ?>
                                             <td class="text-center">
-                                                <a href=""><button class="btn btn-primary btn-sm">Detail</button></a>
+                                                <a href="<?= base_url('Discovery/detail_kuliner/' . $report->id) ?>"><button class="btn btn-primary btn-sm">Detail</button></a>
                                                 <a href="<?= base_url('User/form_update/' . $report->id) ?>"><button class="btn btn-warning btn-sm mx-3">Edit</button></a>
                                                 <a href="<?= base_url('User/delete_laporan/' . $report->id); ?>"><button class="btn btn-danger btn-sm">Hapus</button></a>
                                             </td>
