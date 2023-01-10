@@ -113,7 +113,7 @@
                         </div>
                         <div class=" form-grub mb-3">
                             <label for="description">Deskripsi</label>
-                            <textarea name="description" id="description" class="form-control" placeholder="Masukkan deskripsi tambahans seperti menu apa saja yang dijual"></textarea>
+                            <textarea name="description" id="description" class="form-control" placeholder="Masukkan deskripsi tambahans seperti menu apa saja yang dijual"><?= $data['description']; ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Foto Toko, Gerobak, atau Kedai</label>
