@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div class="container"><a class="navbar-brand logo" href="#">PETA KULINER LAMONGAN</a>
+        <div class="container"><a class="navbar-brand logo" href="<?= base_url('Discovery/search'); ?>">PETA KULINER LAMONGAN</a>
             <nav class="navbar navbar-light navbar-expand-md text-right">
                 <div class="container-fluid"><button data-toggle="collapse" data-target="#navbarNav" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 </div>
@@ -57,7 +57,9 @@
                                 <p class="text-muted"><?= $map->address; ?></p>
                                 <p class="text-muted">Jam Operasioanl : <?= $map->open_time . ' - ' . $map->close_time . ' WIB' ?></p>
                                 <p class="text-muted">Kecamatan : <?= $map->nama_kecamatan . ', Lamongan' ?></p>
-                                <h4 class="card-title">Posted By : <?= $map->username; ?></h4>
+                                <a href="<?= base_url('Discovery/user_profile/' . $map->id_user) ?>">
+                                    <h4 class="card-title">Posted By : <?= $map->username; ?></h4>
+                                </a>
                                 <a href="<?= base_url('Discovery/detail_kuliner/' . $map->id) ?>"><button type="button" class="btn btn-outline-primary">
                                         See More
                                     </button></a>

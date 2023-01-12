@@ -31,6 +31,7 @@ class MappingModel extends CI_Model
     public function viewMapByCulinaryName($culinary_name)
     {
         $this->db->select('r.id as id')
+            ->select('u.id as id_user')
             ->select('u.username as username')
             ->select('c.name as culinary_name')
             ->select('r.title as title')
