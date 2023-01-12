@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* navbar */
+#nav{
+    position: sticky;
+    top: 0;
+    z-index: 1001; 
+}
+.navbar{
+    background-image: linear-gradient(to right, #1ea6ec, #2c92fb);
+}
+.navbar-brand span{
+    font-weight: bolder;
+    color: #fff;
+}
+.navbar-nav ul li{
+    padding: 0 10px;
+}
+.navbar-nav li a{
+    color: #fff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* banner */
+#banner{
+    position: relative;
+    background-image: linear-gradient(to right, #1ea6ec,#2c92fb);
+    color: #fff;
+    padding-top: 5%;
+}
+.title{
+    font-weight: bolder;
+    margin-top: 80px;
+}
+
+.ban-img{
+    position: relative;
+    z-index: 1000;
+}
+.wave{
+    position: absolute;
+    bottom: -20%;
+    left: 0;
+}
+
+/* Features */
+#features{
+    padding: 90px 0;
+
+}
+.features{
+    padding: 20px;
+}
+.features img{
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+}
+.features h4{
+    padding: 5px;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+#pricing {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+#pricing h4{
+    margin-top: 15%;
+}
+
+#pricing ul li{
+    margin-top: 10px;
+    list-style: none;
+    padding-right: 10px;
+}
+#pricing .btn{
+    border-radius: 20px;
+    margin: 0 20px;
+}
+#pricing ul li:hover{
+    transition: 0.2s;
+    transition: scale(1.02);
+    text-shadow: 2px 4px 8px #333;
+}
+
+/*content*/
+#content{
+    /*padding: 80px 0;*/
+        padding-top: 100px;
+    padding-bottom: 400px;
+}
+.contact{
+    margin-top: 5%;
+}
+.contact .btn{
+     border-radius: 20px;
+}
+
+#footer{
+    padding: 20px 0;
+    background-image: linear-gradient(to right, #1ea6ec, #2c92fb);
+    color: #fff;
+}
